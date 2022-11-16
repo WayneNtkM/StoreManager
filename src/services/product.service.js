@@ -15,9 +15,9 @@ async function getProductsById(id) {
 
 async function createNewProduct(name) {
   const result = await productModel.createNewProduct(name);
-  if (!result) {
-    return { type: 'INTERNAL_ERROR', message: 'Internal Error' };
-  }
+  // if (!result) {
+  //   return { type: 'INTERNAL_ERROR', message: 'Internal Error' };
+  // }
   return { type: null, message: result };
 }
 

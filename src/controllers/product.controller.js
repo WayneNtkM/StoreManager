@@ -14,8 +14,8 @@ async function getProductsById(req, res) {
 
 async function createNewProduct(req, res) {
   const { name } = req.body;
-  const { type, message } = await productService.createNewProduct(name);
-  if (type) return res.status(500).json({ message: 'Internal Error' });
+  const { message } = await productService.createNewProduct(name);
+  // if (type) return res.status(500).json({ message: 'Internal Error' });
   return res.status(201).json(message);
 }
 
