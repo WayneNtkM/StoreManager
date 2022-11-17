@@ -1,25 +1,3 @@
-const newSales = [
-  {
-    productId: 1,
-    quantity: 1
-  },
-  {
-    productId: 2,
-    quantity: 5
-  }
-];
-
-const incorrectSales = [
-  {
-    productId: 999,
-    quantity: 1
-  },
-  {
-    productId: 2,
-    quantity: 5
-  }
-];
-
 const sales = [
   {
     "date": "2022-11-17T18:13:27.000Z",
@@ -55,8 +33,6 @@ const salesById = [
 ];
 
 module.exports = {
-  newSales,
-  incorrectSales,
   sales,
   salesById
 }

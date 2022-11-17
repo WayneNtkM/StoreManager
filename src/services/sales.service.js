@@ -17,7 +17,6 @@ async function createNewSale(sales) {
 
 async function getAllSales() {
   const sales = await salesModel.getAllSales();
-  console.log(sales);
   return {
     type: null,
     message: sales,
