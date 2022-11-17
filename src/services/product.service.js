@@ -27,8 +27,22 @@ async function updateProduct(id, name) {
     return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
   }
   await productModel.updateProduct(id, name);
-  const newProduct = await productModel.getProductByName(name);
-  return { type: null, message: newProduct };
+  const result = await productModel.getProductsById(id);
+  return { type: null, message: result };
+}
+
+async function deleteProduct(id) {
+  const product = await productModel.getProductsById(id);
+  if (!product) {
+    return {
+      type: 'PRODUCT_NOT_FOUND',
+      message: 'Product not found',
+    };
+  }
+  await productModel.deleteProduct(id);
+  return {
+    type: null,
+  };
 }
 
 module.exports = {
@@ -36,4 +50,5 @@ module.exports = {
   getProductsById,
   createNewProduct,
   updateProduct,
+  deleteProduct,
 };
