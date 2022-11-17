@@ -23,6 +23,31 @@ async function insert(sales) {
   )));
 }
 
+async function getAllSales() {
+  const query = `
+  SELECT date, product_id AS productId, sale_id AS saleId, quantity
+  FROM StoreManager.sales a
+  INNER JOIN StoreManager.sales_products b
+  ON a.id = b.sale_id
+  `;
+  const [result] = await conn.execute(query);
+  return result;
+}
+
+async function getSalesById(id) {
+  const query = `
+  SELECT date, product_id AS productId, quantity
+  FROM StoreManager.sales a
+  INNER JOIN StoreManager.sales_products b
+  ON a.id = b.sale_id
+  WHERE a.id = ?
+  `;
+  const [result] = await conn.execute(query, [id]);
+  return result;
+}
+
 module.exports = {
   insert,
+  getAllSales,
+  getSalesById,
 };

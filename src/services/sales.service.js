@@ -15,6 +15,31 @@ async function createNewSale(sales) {
   };
 }
 
+async function getAllSales() {
+  const sales = await salesModel.getAllSales();
+  console.log(sales);
+  return {
+    type: null,
+    message: sales,
+  };
+}
+
+async function getSalesById(id) {
+  const sales = await salesModel.getSalesById(id);
+  if (sales.length === 0) {
+    return {
+      type: 'SALE_NOT_FOUND',
+      message: 'Sale not found',
+    };
+  }
+  return {
+    type: null,
+    message: sales,
+  };
+}
+
 module.exports = {
   createNewSale,
+  getAllSales,
+  getSalesById,
 };
