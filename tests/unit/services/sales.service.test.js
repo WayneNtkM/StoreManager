@@ -44,7 +44,7 @@ describe('Sales service Unit Tests', function () {
       expect(type).to.be.equal(null);
       expect(message).to.be.deep.equal(salesById);
     });
-    it('Should return sales by id', async function () {
+    it('Should return an error', async function () {
       sinon.stub(salesModel, 'getSalesById')
         .resolves([]);
 

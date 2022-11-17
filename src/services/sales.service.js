@@ -6,8 +6,8 @@ async function createNewSale(sales) {
   const validId = sales.map(({ productId }) => products
     .some((e) => e.id === productId)).every((e) => e === true);
   if (validId) {
-    await salesModel.insert(sales);
-    return { type: null, message: 'Successful insert' };
+    const { insertId } = await salesModel.insert(sales);
+    return { type: null, message: 'Successful insert', insertId };
   }
   return {
     type: 'PRODUCT_NOT_FOUND',

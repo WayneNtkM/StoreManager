@@ -50,5 +50,30 @@ describe('Products service Unit Test', function () {
       expect(type).to.be.equal(null);
       expect(message).to.deep.equal({ name: 'produtoX' });
     });
+    it('Should return an error', async function () {
+      sinon.stub(productModel, 'updateProduct')
+        .resolves({ type: 'PRODUCT_NOT_FOUND', message: 'Product not found' });
+      const name = 'Machado do Kratos';
+      const id = 10;
+      const { type, message } = await productService.updateProduct(id, name);
+
+      expect(type).to.be.equal('PRODUCT_NOT_FOUND');
+      expect(message).to.be.equal('Product not found');
+    });
+    it('Should update the product', async function () {
+      const updatedProduct = {
+        id: 1,
+        name: 'Machado do Kratos'
+      };
+      sinon.stub(productModel, 'updateProduct')
+        .resolves(updatedProduct);
+      sinon.stub(productModel, 'getProductsById')
+        .onCall(0).resolves({ id: 1, name: 'Martelo de Thor' })
+        .onCall(1).resolves(updatedProduct);
+      const { id, name } = updatedProduct;
+      const { type, message } = await productService.updateProduct(id, name);
+      expect(type).to.be.equal(null);
+      expect(message).to.be.deep.equal(updatedProduct);
+    });
   });
 });

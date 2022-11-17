@@ -20,7 +20,7 @@ describe('Sales controller Unit Tests', function () {
       res.json = sinon.stub().returns();
 
       sinon.stub(salesService, 'createNewSale')
-        .resolves({ type: null, message: { id: 3, itemsSold: newSales } });
+        .resolves({ type: null, message: 'Successful insert', insertId: 3 });
 
       await salesController.createNewSale(req, res);
 
