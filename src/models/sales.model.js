@@ -12,14 +12,13 @@ async function insertIntoSales() {
   await conn.execute(SALE_QUERY, [date]);
 }
 
-async function insert(sale) {
+async function insert(sales) {
   const SALE_PRODUCTS_QUERY = `INSERT INTO StoreManager.sales_products 
   (sale_id, product_id, quantity)
   VALUES (?, ?, ?)`;
   const { id } = await getLastSale();
-  console.log(id);
   await insertIntoSales();
-  await Promise.all(sale.map(({ productId, quantity }) => (
+  await Promise.all(sales.map(({ productId, quantity }) => (
     conn.execute(SALE_PRODUCTS_QUERY, [id + 1, productId, quantity])
   )));
 }
