@@ -32,5 +32,24 @@ describe('Product model Unit Tests', function () {
       const result = await productModel.createNewProduct(body.name);
       expect(result).to.be.deep.equal(body);
     });
+    it('Should create a new product', async function () {
+      sinon.stub(conn, 'execute')
+        .resolves([[{ name: 'produtoX' }]]);
+      const body = { name: 'produtoX' }
+      const result = await productModel.createNewProduct(body.name);
+      expect(result).to.be.deep.equal(body);
+    });
+    it('Should update product', async function () {
+      sinon.stub(conn, 'execute')
+        .resolves();
+      const name = 'Machado do Kratos';
+      await productModel.updateProduct(1, name);
+    });
+    it('Should delete product', async function () {
+      sinon.stub(conn, 'execute')
+        .resolves();
+      const id = 1;
+      await productModel.deleteProduct(id);
+    });
   });
 });
