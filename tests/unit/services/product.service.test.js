@@ -13,11 +13,6 @@ describe('Products service Unit Test', function () {
   describe('Unit Tests products.service', function () {
     afterEach(sinon.restore);
     it('Should return all products', async function () {
-      const req = {};
-      const res = {};
-
-      res.status = sinon.stub().returns(res);
-      req.json = sinon.stub().returns();
       sinon.stub(productModel, 'getAllProducts')
         .resolves(products);
       
@@ -28,10 +23,6 @@ describe('Products service Unit Test', function () {
     });
     it('Should return an error type', async function () {
       const req = { params: { id: 9 } };
-      const res = {};
-
-      res.status = sinon.stub().returns(res);
-      req.json = sinon.stub().returns();
       sinon.stub(productModel, 'getAllProducts')
         .resolves(null);
 
@@ -41,25 +32,16 @@ describe('Products service Unit Test', function () {
       expect(message).to.be.equal('Product not found');
     });
     it('Should return the correct product', async function () {
-      const req = { params: { id: 1 } };
-      const res = {};
+      sinon.stub(productModel, 'getProductsById')
+        .resolves(productById);
 
-      res.status = sinon.stub().returns(res);
-      req.json = sinon.stub().returns();
-      sinon.stub(productModel, 'getAllProducts')
-        .resolves({ type: null, message: productById });
-
-      const { type, message } = await productService.getProductsById(req.params.id);
+      const { type, message } = await productService.getProductsById(1);
 
       expect(type).to.be.equal(null);
       expect(message).to.deep.equal(productById);
     });
     it('Should create a new product', async function () {
       const req = { body: { name: 'produtoX' } };
-      const res = {};
-
-      res.status = sinon.stub().returns(res);
-      req.json = sinon.stub().returns();
       sinon.stub(productModel, 'createNewProduct')
         .resolves({ name: 'produtoX' });
 
