@@ -82,5 +82,54 @@ describe('Products controller Unit Tests', function() {
       expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
       expect(res.status).to.have.been.calledWith(404);
     });
+    it('Should delete the product', async function () {
+      const req = { params: { id: 1 } };
+      const res = {};
+
+      res.status = sinon.stub().returns(res);
+      res.end = sinon.stub().returns();
+      res.json = sinon.stub().returns();
+      sinon.stub(productsService, 'deleteProduct')
+        .resolves({ type: null });
+      await productsController.deleteProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(204);
+    });
+    it('Should update the product', async function () {
+      const req = {
+        params: { id: 1 }, body: {
+          name: 'Machado do Kratos'
+        } };
+      const res = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(productsService, 'updateProduct')
+        .resolves({ type: null, message: { id: 1, name: 'Machado do Kratos' } });
+      await productsController.updateProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith({
+        id: 1,
+        name: 'Machado do Kratos'
+      });
+    });
+    it('Should return an error', async function () {
+      const req = {
+        params: { id: 999 }, body: {
+          name: 'Machado do Kratos'
+        }
+      };
+      const res = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(productsService, 'updateProduct')
+        .resolves({ type: 'PRODUCT_NOT_FOUND', message: 'Product not found' });
+      await productsController.updateProduct(req, res);
+
+      expect(res.status).to.have.been.calledWith(404);
+      expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
+    });
   });
 });
