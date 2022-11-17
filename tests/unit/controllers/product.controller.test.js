@@ -69,5 +69,18 @@ describe('Products controller Unit Tests', function() {
       expect(res.json).to.have.been.calledWith({ message: 'Product not found'});
       expect(res.status).to.have.been.calledWith(404);
     });
+    it('Should return an error', async function () {
+      const req = { params: { id: 999 }};
+      const res = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(productsService, 'deleteProduct')
+        .resolves({ type: 'PRODUCT_NOT_FOUND', message: 'Product not found' });
+      await productsController.deleteProduct(req, res);
+
+      expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
+      expect(res.status).to.have.been.calledWith(404);
+    });
   });
 });

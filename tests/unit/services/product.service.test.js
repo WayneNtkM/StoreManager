@@ -75,5 +75,22 @@ describe('Products service Unit Test', function () {
       expect(type).to.be.equal(null);
       expect(message).to.be.deep.equal(updatedProduct);
     });
+    it('Should delete the product', async function () {
+      sinon.stub(productModel, 'deleteProduct')
+        .resolves(null);
+      const id = 1;
+      const { type } = await productService.deleteProduct(id);
+
+      expect(type).to.be.equal(null);
+    });
+    it('Should retun an error', async function () {
+      sinon.stub(productModel, 'deleteProduct')
+        .resolves(null);
+      const id = 10;
+      const { type, message } = await productService.deleteProduct(id);
+
+      expect(type).to.be.equal('PRODUCT_NOT_FOUND');
+      expect(message).to.be.equal('Product not found');
+    });
   });
 });
