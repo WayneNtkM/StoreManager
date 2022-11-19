@@ -45,10 +45,20 @@ async function deleteProduct(id) {
   };
 }
 
+async function getProductByName(name) {
+  const product = await productModel.getProductByName(name);
+  if (name.length === 0) {
+    const products = await productModel.getAllProducts();
+    return { type: null, message: products };
+  }
+  return { type: null, message: [product] };
+}
+
 module.exports = {
   getProducts,
   getProductsById,
   createNewProduct,
   updateProduct,
   deleteProduct,
+  getProductByName,
 };

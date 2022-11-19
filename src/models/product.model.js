@@ -13,8 +13,8 @@ async function getProductsById(id) {
 }
 
 async function getProductByName(name) {
-  const query = 'SELECT * FROM StoreManager.products WHERE name = ?';
-  const [[result]] = await conn.execute(query, [name]);
+  const query = `SELECT * FROM StoreManager.products WHERE name LIKE "%${name}%"`;
+  const [[result]] = await conn.execute(query);
   return result;
 }
 

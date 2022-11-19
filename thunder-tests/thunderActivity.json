@@ -98,13 +98,166 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/products/",
-    "url": "http://localhost:3000/products/1",
+    "url": "http://localhost:3000/sales/1",
     "method": "DELETE",
     "sortNum": 0,
     "created": "2022-11-12T01:21:30.784Z",
-    "modified": "2022-11-17T17:55:13.984Z",
+    "modified": "2022-11-19T18:47:49.515Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "23343e9b-b7e8-42f0-991a-70a715722370",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sales/1",
+    "url": "http://localhost:3000/sales/1",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2022-11-19T21:40:24.906Z",
+    "modified": "2022-11-19T21:55:01.632Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 10\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 50\n  }\n]",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "52d1539c-5d96-42e1-ba15-10b60e828df6",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/search?q=",
+    "url": "http://localhost:3000/products/search?q=",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-19T22:05:49.670Z",
+    "modified": "2022-11-19T22:06:54.213Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "4dd63273-a13f-476a-b73c-883a09da6688",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/search?q=m",
+    "url": "http://localhost:3000/products/search?q=m",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-19T22:07:44.737Z",
+    "modified": "2022-11-19T22:07:44.737Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "m",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "4cb583eb-8a64-4679-beaf-be8a5097e85c",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/search?q=Mar",
+    "url": "http://localhost:3000/products/search?q=Mar",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-19T22:07:49.778Z",
+    "modified": "2022-11-19T22:07:49.778Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "Mar",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "74697276-0510-4740-addb-f606a014db85",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/search?q=M",
+    "url": "http://localhost:3000/products/search?q=M",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-19T22:12:10.968Z",
+    "modified": "2022-11-19T22:12:10.968Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "M",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "8f52cf3e-2669-4c1b-b5d7-b82935ca3e0c",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/search?",
+    "url": "http://localhost:3000/products/search?",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-19T22:22:48.731Z",
+    "modified": "2022-11-19T22:22:48.731Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ec578ea9-c159-4630-aa3f-282fc89b625f",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/search?q",
+    "url": "http://localhost:3000/products/search?q",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-19T22:22:58.498Z",
+    "modified": "2022-11-19T22:22:58.498Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "49ec9732-7c9f-42a2-a3fd-4fee0061f249",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/search?q=ma",
+    "url": "http://localhost:3000/products/search?q=ma",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-11-19T22:25:23.230Z",
+    "modified": "2022-11-19T22:25:23.230Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "ma",
+        "isPath": false
+      }
+    ],
     "tests": []
   }
 ]
