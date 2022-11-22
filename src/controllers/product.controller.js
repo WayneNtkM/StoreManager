@@ -34,10 +34,10 @@ async function deleteProduct(req, res) {
   return res.status(204).end();
 }
 
-async function getProductByName(req, res) {
+async function getProductByName(req, response) {
   const { q } = req.query;
   const { message } = await productService.getProductByName(q);
-  return res.status(200).json(message);
+  return response.status(200).json(message);
 }
 
 module.exports = {
