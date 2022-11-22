@@ -66,7 +66,7 @@ async function updateSales(id, sales) {
     return {
       type: null,
       message: {
-        saleId: id, itemsUpdated: sales },
+        saleId: id, itemsUpdated: [sales[1], sales[0]] },
     };
   }
   return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
