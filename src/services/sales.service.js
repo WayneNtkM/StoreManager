@@ -63,10 +63,11 @@ async function updateSales(id, sales) {
 }
   if (validId) {
     await salesModel.updateSales(id, sales);
+    console.log(sales);
     return {
       type: null,
       message: {
-        saleId: id, itemsUpdated: [sales[1], sales[0]] },
+        saleId: id, itemsUpdated: sales },
     };
   }
   return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
